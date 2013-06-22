@@ -1,0 +1,5 @@
+name = Text NL2BR
+description = Defines text formatter that converts long_texts to breaks.
+package = Formatters
+core = 7.x
+dependencies[] = text

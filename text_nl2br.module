@@ -1,0 +1,31 @@
+<?php
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function text_nl2br_field_formatter_info() {
+  return array(
+    'text_nl2br' => array(
+      'label' => t('New line to break'),
+      'field types' => array('text_long'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function text_nl2br_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    case 'text_nl2br':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => '<p>' . nl2br(strip_tags($item['value'])) . '</p>');
+      }
+      break;
+  }
+
+  return $element;
+}
