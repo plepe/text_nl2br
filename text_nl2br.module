@@ -22,7 +22,7 @@ function text_nl2br_field_formatter_view($entity_type, $entity, $field, $instanc
   switch ($display['type']) {
     case 'text_nl2br':
       foreach ($items as $delta => $item) {
-        $element[$delta] = array('#markup' => '<p>' . nl2br(strip_tags($item['value'])) . '</p>');
+        $element[$delta] = array('#markup' => '<p>' . nl2br(htmlspecialchars($item['value'])) . '</p>');
       }
       break;
   }
